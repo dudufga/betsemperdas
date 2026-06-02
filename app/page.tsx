@@ -1,4 +1,4 @@
-'use client';   // ← Adicionado isso para resolver o erro
+'use client';
 
 import Link from 'next/link';
 
@@ -25,42 +25,12 @@ export default function Home() {
           <h3 className="text-3xl font-bold mb-10 text-center">Jogos Populares</h3>
           
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <GameCard 
-              title="Gates of Olympus" 
-              provider="Pragmatic Play" 
-              image="https://via.placeholder.com/600x400/4F46E5/FFFFFF?text=Gates+of+Olympus"
-              href="/jogos/gates-of-olympus" 
-            />
-            <GameCard 
-              title="Sweet Bonanza" 
-              provider="Pragmatic Play" 
-              image="https://via.placeholder.com/600x400/F59E0B/FFFFFF?text=Sweet+Bonanza"
-              href="/jogos/sweet-bonanza" 
-            />
-            <GameCard 
-              title="Sugar Rush" 
-              provider="Pragmatic Play" 
-              image="https://via.placeholder.com/600x400/EC4899/FFFFFF?text=Sugar+Rush"
-              href="/jogos/sugar-rush" 
-            />
-            <GameCard 
-              title="Big Bass Bonanza" 
-              provider="Pragmatic Play" 
-              image="https://via.placeholder.com/600x400/10B981/FFFFFF?text=Big+Bass"
-              href="/jogos/big-bass-bonanza" 
-            />
-            <GameCard 
-              title="Aviator" 
-              provider="Spribe" 
-              image="https://via.placeholder.com/600x400/F97316/FFFFFF?text=Aviator"
-              href="/jogos/aviator" 
-            />
-            <GameCard 
-              title="Starlight Princess" 
-              provider="Pragmatic Play" 
-              image="https://via.placeholder.com/600x400/8B5CF6/FFFFFF?text=Starlight"
-              href="/jogos/starlight-princess" 
-            />
+            <GameCard title="Gates of Olympus" provider="Pragmatic Play" href="/jogos/gates-of-olympus" />
+            <GameCard title="Sweet Bonanza" provider="Pragmatic Play" href="/jogos/sweet-bonanza" />
+            <GameCard title="Sugar Rush" provider="Pragmatic Play" href="/jogos/sugar-rush" />
+            <GameCard title="Big Bass Bonanza" provider="Pragmatic Play" href="/jogos/big-bass-bonanza" />
+            <GameCard title="Aviator" provider="Spribe" href="/jogos/aviator" />
+            <GameCard title="Starlight Princess" provider="Pragmatic Play" href="/jogos/starlight-princess" />
           </div>
         </div>
       </main>
@@ -72,12 +42,24 @@ export default function Home() {
   );
 }
 
-function GameCard({ title, provider, image, href }: any) {
+function GameCard({ title, provider, href }: any) {
+  // Imagens fixas e confiáveis (picsum.photos)
+  const images: { [key: string]: string } = {
+    "Gates of Olympus": "https://picsum.photos/id/1015/600/400",
+    "Sweet Bonanza": "https://picsum.photos/id/133/600/400",
+    "Sugar Rush": "https://picsum.photos/id/201/600/400",
+    "Big Bass Bonanza": "https://picsum.photos/id/251/600/400",
+    "Aviator": "https://picsum.photos/id/1005/600/400",
+    "Starlight Princess": "https://picsum.photos/id/1009/600/400",
+  };
+
+  const imageUrl = images[title] || "https://picsum.photos/id/1015/600/400";
+
   return (
     <Link href={href}>
       <div className="bg-gray-900 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 shadow-lg">
         <img 
-          src={image} 
+          src={imageUrl} 
           alt={title} 
           className="w-full h-52 object-cover"
         />
