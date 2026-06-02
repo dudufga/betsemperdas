@@ -43,7 +43,7 @@ export default function Home() {
 }
 
 function GameCard({ title, provider, href }: any) {
-  // Imagens fixas e confiáveis (picsum.photos)
+  // Imagens fixas e 100% confiáveis (sem random)
   const images: { [key: string]: string } = {
     "Gates of Olympus": "https://picsum.photos/id/1015/600/400",
     "Sweet Bonanza": "https://picsum.photos/id/133/600/400",
